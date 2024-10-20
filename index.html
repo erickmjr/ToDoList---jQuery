@@ -17,18 +17,26 @@
     <main>
         <form>
             <div id="container-form">
-                <input type="text" placeholder="Task name...">
+                <input type="text" placeholder="Task name..." maxlength="40">
                 <button id="adding-button">ADD</button>
                 <button id="cancel-button">CANCEL</button>
             </div>
             <p id="msgError"></p>
         </form>
         <section>
-            <ul>
+            <ul id="lista-itens">
                 
             </ul>
         </section>
     </main>
+
+    <footer>
+            <p>Desenvolvido por 
+                <a href="https://github.com/erickmjr/ToDoList---jQuery" target="_blank">erickmjr
+            </a>
+            <img src="images/GithubLogo.png" alt="Github" id="githubLogo">
+        </p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="main.js"></script>

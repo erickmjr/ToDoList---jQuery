@@ -3,6 +3,9 @@ $(document).ready(function(){
     const arrayNames = [];
     const name = $("form input");
     var i = 0;
+    const msgError = $("#msgError");
+    msgError.toggleClass("available");
+    
 
     $("header button").click(function(){
         $("form").slideDown();
@@ -14,7 +17,7 @@ $(document).ready(function(){
     $("#cancel-button").click(function(){
         $("form").slideUp();
         $("section").slideUp();
-        $("#msgError").css("display", "none");
+        msgError.css("display", "none");
         $("form input").val("");
     })
 
@@ -24,38 +27,39 @@ $(document).ready(function(){
     })
 
     $("form input").on("input", function(){
+        msgError.toggleClass("available");
 
         if(name.val().trim() == ""){
-            $("#msgError").slideUp();
+            msgError.slideUp();
+            msgError.toggleClass("available");
         }
 
         else if(arrayNames.includes(name.val())){
-            $("#msgError").slideDown();
-            $("#msgError").html(`Task "${name.val()}" already exists in list.`);
-            $("#msgError").css("background-color", "rgba(255, 0, 0, 0.195)");
+            msgError.slideDown();
+            msgError.html(`Task "${name.val()}" already exists in list.`);
+            msgError.toggleClass("nonAvailable");
         }
         else if(!arrayNames.includes(name.val())){
-            $("#msgError").slideDown();
-            $("#msgError").html(`Available`);
-            $("#msgError").css("background-color", "rgb(19, 91, 26)");
+            msgError.slideDown();
+            msgError.html(`Available`);
+            msgError.toggleClass("available");
         }
-        
-        })
+    })
 
     $("#adding-button").click(function(){
-
+        msgError.toggleClass("available");
         $("section").slideDown();
 
         if(arrayNames.includes(name.val())){
-            $("#msgError").slideDown();
-            $("#msgError").html(`Task "${name.val()}" already exists in list.`);
-            $("#msgError").css("background-color", "rgba(255, 0, 0, 0.195)");
+            msgError.slideDown();
+            msgError.html(`Task "${name.val()}" already exists in list.`);
+            msgError.toggleClass("nonAvailable");
         }
 
         else if(name.val().trim() == ""){
-            $("#msgError").slideDown();
-            $("#msgError").html(`Task field can't be empty.`);
-            $("#msgError").css("background-color", "rgba(255, 0, 0, 0.195)");
+            msgError.slideDown();
+            msgError.html(`Task field can't be empty.`);
+            msgError.toggleClass("nonAvailable");
         }
 
         else{
@@ -63,33 +67,29 @@ $(document).ready(function(){
             $("section ul li").slideDown();
             arrayNames.push(name.val());
             
-            $("section").append(`
+            $("section ul").append(`
                 
                 
                 <li id="line${i}">
                 <p>Task ${i+1}:</p>
-                <button id="mark-button${i}" type = "submit">
+                <button type = "submit">
                 ${name.val()}
                 </button>
                 </li>
                 
                 `);
                 $("form input").val("");
-                $("#msgError").css("display", "none");
+                msgError.css("display", "none");
                 i++;
         }
 
 })
 
-$(`mark-button${i}`).click(function(){
-    $(`line${i}`).css("text-decoration", "line-through");
+$("#lista-itens").on("click", "button", function(){
+    
+    const parentButton = $(this).parent();
+    parentButton.toggleClass("marked");
 
 })
-
-
-
-
-
-
 
 })

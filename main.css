@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@100;400;700&display=swap');
 
 :root{
-    --fonte-destaque: "Ubuntu", sans-serif;
+    --fonte-destaque: 'Ubuntu', sans-serif;
 }
+
 
 *{
     margin: 0;
@@ -24,6 +24,7 @@ p{
 
 button{
     cursor: pointer;
+    font-family: var(--fonte-destaque);
 }
 
 header{
@@ -35,7 +36,7 @@ header{
     background-color: rgb(7, 5, 10);
     color: white;
     padding: 3vw;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -84,7 +85,6 @@ form input{
     display: none;
     margin-top: 2vw;
     text-align: center;
-    background-color: rgba(255, 0, 0, 0.195);
     padding: 2vw;
     width: fit-content;
     border-radius: 8px;
@@ -95,13 +95,20 @@ section{
     background-color: rgba(72, 19, 185, 0.633);
 }
 
+section ul{
+    font-family: var(--fonte-destaque);
+}
+
 section li{
     list-style-type: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: first baseline;
+    gap: 4vw;
     align-items: center;
     padding: 2vw;
     border-top: 1px solid rgba(0, 0, 0, 0.123);
+    
+
 }
 
 section button{
@@ -110,6 +117,46 @@ section button{
     border-radius: 8px;
     font-weight: bolder;
 }
+
+
+.available{
+    background-color: rgba(20, 57, 99, 0.652);
+}
+
+.nonAvailable{
+    background-color: rgba(255, 0, 0, 0.195);
+}
+
+.marked{
+    background-color: rgb(81, 74, 109);
+    text-decoration: line-through;
+}
+
+footer{
+    padding: 2vw;
+    background-color: rgb(114, 77, 195);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a{
+    color: white;
+    margin: 0 3px;
+}
+
+#githubLogo{
+    max-width: 2.8vw;
+    margin-left: 0.5vw;
+}
+
+
 
 @media (max-width: 800px) {
     header button{
@@ -123,5 +170,10 @@ section button{
 
     form input{
         padding: 1.2vw;
+    }
+
+    #githubLogo{
+        max-width: 4vw;
+        margin-left: 0.5vw;
     }
 }
