@@ -16,6 +16,7 @@
 body{
     height: 100vh;
     font-family: var(--fonte-destaque);
+    background-color: lightgrey;
 }
 
 p{
