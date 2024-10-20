@@ -4,7 +4,6 @@ $(document).ready(function(){
     const name = $("form input");
     var i = 0;
     const msgError = $("#msgError");
-    msgError.toggleClass("available");
     
 
     $("header button").click(function(){
@@ -27,39 +26,37 @@ $(document).ready(function(){
     })
 
     $("form input").on("input", function(){
-        msgError.toggleClass("available");
-
+        
         if(name.val().trim() == ""){
             msgError.slideUp();
-            msgError.toggleClass("available");
         }
 
         else if(arrayNames.includes(name.val())){
             msgError.slideDown();
             msgError.html(`Task "${name.val()}" already exists in list.`);
-            msgError.toggleClass("nonAvailable");
+            msgError.removeClass("available").addClass("nonAvailable");
         }
         else if(!arrayNames.includes(name.val())){
             msgError.slideDown();
             msgError.html(`Available`);
-            msgError.toggleClass("available");
+            msgError.removeClass("nonAvailable").addClass("available");
         }
     })
 
     $("#adding-button").click(function(){
-        msgError.toggleClass("available");
         $("section").slideDown();
 
         if(arrayNames.includes(name.val())){
             msgError.slideDown();
             msgError.html(`Task "${name.val()}" already exists in list.`);
-            msgError.toggleClass("nonAvailable");
+            msgError.removeClass("available").addClass("nonAvailable");
         }
 
         else if(name.val().trim() == ""){
             msgError.slideDown();
             msgError.html(`Task field can't be empty.`);
-            msgError.toggleClass("nonAvailable");
+            msgError.removeClass("available").addClass("nonAvailable");
+            
         }
 
         else{
